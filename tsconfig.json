@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es2019",
+    "strict": true,
+    "lib": ["es2019"],
+    "moduleResolution": "Node"
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}

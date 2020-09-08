@@ -15,5 +15,13 @@
   "bugs": {
     "url": "https://github.com/bybrunobarros/kata/issues"
   },
-  "homepage": "https://github.com/bybrunobarros/kata#readme"
+  "homepage": "https://github.com/bybrunobarros/kata#readme",
+  "devDependencies": {
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.2"
+  },
+  "engines": {
+    "node": ">=14"
+  },
+  "type": "module"
 }
