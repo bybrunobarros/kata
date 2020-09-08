@@ -19,3 +19,13 @@ type Game = [
   Frame?,
   Frame?,
 ];
+
+export function play(frames: Game): number {
+  return frames.reduce((acc: number, frame: Frame | undefined): number => {
+    if (frame === undefined) return acc;
+
+    const [firstTry, secondTry = 0] = frame;
+    acc = acc + firstTry + secondTry;
+    return acc;
+  }, 0);
+}
