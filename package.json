@@ -4,6 +4,7 @@
   "description": "Coding kata in TypeScript",
   "main": "index.js",
   "scripts": {
+    "lint": "eslint ./**/*.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,6 +21,8 @@
     "@typescript-eslint/eslint-plugin": "^4.1.0",
     "@typescript-eslint/parser": "^4.1.0",
     "eslint": "^7.8.1",
+    "eslint-config-prettier": "^6.11.0",
+    "prettier": "^2.1.1",
     "ts-node": "^9.0.0",
     "typescript": "^4.0.2"
   },
@@ -27,6 +30,17 @@
     "node": ">=14"
   },
   "type": "module",
+  "prettier": {
+    "trailingComma": "all",
+    "overrides": [
+      {
+        "files": "*.ts",
+        "options": {
+          "parser": "typescript"
+        }
+      }
+    ]
+  },
   "eslintConfig": {
     "env": {
       "es6": true,
@@ -34,7 +48,9 @@
     },
     "extends": [
       "eslint:recommended",
-      "plugin:@typescript-eslint/recommended"
+      "plugin:@typescript-eslint/recommended",
+      "prettier",
+      "prettier/@typescript-eslint"
     ],
     "parser": "@typescript-eslint/parser",
     "plugins": [
