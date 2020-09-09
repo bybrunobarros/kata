@@ -62,14 +62,12 @@ function getBonusScore(
 }
 
 export function play(frames: Game): number {
-  let bonus: Bonus = NONE;
-
   return frames.reduce(
     (acc: number, frame: Frame | undefined, index: number): number => {
       if (index >= 10 || frame === undefined) return acc;
 
       const [firstTry, secondTry = 0] = frame;
-      bonus = getBonusType(firstTry, secondTry);
+      const bonus = getBonusType(firstTry, secondTry);
 
       if (bonus === SPARE) {
         return acc + firstTry + secondTry + getBonusScore(frames, index, 1);
