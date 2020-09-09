@@ -22,17 +22,43 @@ type Game = [
 
 const NONE: NONE = "none";
 const SPARE: SPARE = "spare";
+const STRIKE: STRIKE = "strike";
 
 function isSpare(firstTry: number, secondTry: number): boolean {
   return firstTry < 10 && firstTry + secondTry === 10;
+}
+
+function isStrike(firstTry: number): boolean {
+  return firstTry === 10;
 }
 
 function getBonusType(firstTry: number, secondTry: number): Bonus {
   if (isSpare(firstTry, secondTry)) {
     return SPARE;
   }
-
+  if (isStrike(firstTry)) {
+    return STRIKE;
+  }
   return NONE;
+}
+
+function getBonusScore(
+  frames: Game,
+  currentIndex: number,
+  pinCount: number,
+): number {
+  const score = frames
+    .slice(currentIndex + 1)
+    .flat()
+    .slice(0, pinCount)
+    .reduce((acc, pins) => {
+      if (acc !== undefined && pins !== undefined) {
+        acc = acc + pins;
+      }
+      return acc;
+    }, 0);
+
+  return score || 0;
 }
 
 export function play(frames: Game): number {
@@ -45,23 +71,14 @@ export function play(frames: Game): number {
       const [firstTry, secondTry = 0] = frame;
       bonus = getBonusType(firstTry, secondTry);
 
-      if (bonus === NONE) {
-        acc = acc + firstTry + secondTry;
-      }
       if (bonus === SPARE) {
-        const bonusScore = frames
-          .slice(index + 1)
-          .flat()
-          .slice(0, 1)
-          .reduce((acc, pins) => {
-            if (acc !== undefined && pins !== undefined) {
-              acc = acc + pins;
-            }
-            return acc;
-          }, 0);
-        acc = acc + firstTry + secondTry + (bonusScore || 0);
+        return acc + firstTry + secondTry + getBonusScore(frames, index, 1);
       }
-      return acc;
+      if (bonus === STRIKE) {
+        return acc + firstTry + getBonusScore(frames, index, 2);
+      }
+
+      return acc + firstTry + secondTry;
     },
     0,
   );

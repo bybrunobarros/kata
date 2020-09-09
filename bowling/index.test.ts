@@ -33,3 +33,21 @@ test("when 10 spares the game should return a score with spare bonuses", (t) => 
   ]);
   t.is(score, 150);
 });
+
+test("when 10 strikes the game should return a score with strike bonuses", (t) => {
+  const score = play([
+    [10],
+    [10],
+    [10],
+    [10],
+    [10],
+    [10],
+    [10],
+    [10],
+    [10],
+    [10],
+    [10],
+    [10],
+  ]);
+  t.is(score, 300);
+});
