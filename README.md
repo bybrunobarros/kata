@@ -13,3 +13,6 @@ For now only tests are runnable
 ```
 > npm test
 ```
+
+### Kata
+[Bowling](https://codingdojo.org/kata/Bowling/)
