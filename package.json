@@ -4,7 +4,7 @@
   "description": "Coding kata in TypeScript",
   "main": "index.js",
   "scripts": {
-    "format": "prettier --check",
+    "format": "prettier --check ./**/*.ts",
     "format:fix": "prettier --write",
     "lint": "eslint ./**/*.ts",
     "lint:fix": "eslint --cache --fix",
