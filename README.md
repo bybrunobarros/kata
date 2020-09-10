@@ -1,4 +1,4 @@
-# Kata
+# Kata [![Build Status](https://travis-ci.org/bybrunobarros/kata.svg?branch=main)](https://travis-ci.org/bybrunobarros/kata)
 Here are some coding kata in TypeScript.
 
 ### Requirement
