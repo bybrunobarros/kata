@@ -4,7 +4,8 @@
   "description": "Coding kata in TypeScript",
   "main": "index.js",
   "scripts": {
-    "format": "prettier --write",
+    "format": "prettier --check",
+    "format:fix": "prettier --write",
     "lint": "eslint ./**/*.ts",
     "lint:fix": "eslint --cache --fix",
     "test": "ava",
@@ -91,7 +92,7 @@
   "lint-staged": {
     "*.ts": [
       "npm run lint:fix",
-      "npm run format"
+      "npm run format:fix"
     ]
   }
 }
